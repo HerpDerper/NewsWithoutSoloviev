@@ -75,6 +75,7 @@ public class AllNewsActivityAdministrator extends AppCompatActivity {
                 intent.putExtra("Id", IDUser);
                 intent.putExtra("IdNews", (int) viewHolder.itemView.getTag());
                 startActivity(intent);
+                finish();
             }
         }).attachToRecyclerView(recyclerNews);
     }
