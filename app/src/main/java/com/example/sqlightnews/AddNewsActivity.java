@@ -53,7 +53,7 @@ public class AddNewsActivity extends AppCompatActivity {
     }
 
     public void exitClick(View view) {
-        Intent intent = new Intent(this, AllNewsActivity.class);
+        Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
         intent.putExtra("Id", IDUser);
         startActivity(intent);
         finish();
