@@ -105,15 +105,14 @@ public class RegistrationActivity extends AppCompatActivity {
                         txtUserPatronymic.getText().toString().trim(), txtDateOfBirth.getText().toString().trim(),
                         txtLogin.getText().toString().trim(), txtPassword.getText().toString().trim(), spnRoles.getSelectedItem().toString());
         if (checkInsertData) {
-            Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
             Cursor res = databaseHelper.getData(txtLogin.getText().toString().trim(), txtPassword.getText().toString().trim());
             if (res.getCount() == 0) {
                 return;
             }
             while (res.moveToNext()) {
                 if (res.getString(7).equals("Администратор")) {
-                    intent.putExtra("Id", res.getInt(0));
-                    startActivity(intent);
+                    startActivity(new Intent(this, AllNewsActivityAdministrator.class)
+                            .putExtra("Id", res.getInt(0)));
                 } else {
                     startActivity(new Intent(this, AllNewsActivity.class));
                 }

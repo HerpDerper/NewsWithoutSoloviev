@@ -71,10 +71,9 @@ public class AllNewsActivityAdministrator extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                Intent intent = new Intent(AllNewsActivityAdministrator.this, UpdateNewsActivity.class);
-                intent.putExtra("Id", IDUser);
-                intent.putExtra("IdNews", (int) viewHolder.itemView.getTag());
-                startActivity(intent);
+                startActivity(new Intent(AllNewsActivityAdministrator.this, UpdateNewsActivity.class)
+                        .putExtra("Id", IDUser)
+                        .putExtra("IdNews", (int) viewHolder.itemView.getTag()));
                 finish();
             }
         }).attachToRecyclerView(recyclerNews);
@@ -88,9 +87,7 @@ public class AllNewsActivityAdministrator extends AppCompatActivity {
     }
 
     public void addNewsClick(View view) {
-        Intent intent = new Intent(this, AddNewsActivity.class);
-        intent.putExtra("Id", IDUser);
-        startActivity(intent);
+        startActivity(new Intent(this, AddNewsActivity.class).putExtra("Id", IDUser));
         finish();
     }
 }

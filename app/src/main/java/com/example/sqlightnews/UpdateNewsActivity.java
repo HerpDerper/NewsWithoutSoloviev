@@ -32,7 +32,7 @@ public class UpdateNewsActivity extends AppCompatActivity {
 
     private void setData() {
         Cursor res = databaseHelper.getNewsData(IdNews);
-        while (res.moveToNext()){
+        while (res.moveToNext()) {
             txtContent.setText(res.getString(2));
             txtTitle.setText(res.getString(1));
         }
@@ -56,17 +56,13 @@ public class UpdateNewsActivity extends AppCompatActivity {
         databaseHelper
                 .updateNews(IdNews, txtTitle.getText().toString().trim(), txtContent.getText().toString().trim(),
                         DateUtils.formatDateTime(getApplicationContext(), date.getTimeInMillis(),
-                        DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME), IDUser);
-        Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
-        intent.putExtra("Id", IDUser);
-        startActivity(intent);
+                                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME), IDUser);
+        startActivity(new Intent(this, AllNewsActivityAdministrator.class).putExtra("Id", IDUser));
         finish();
     }
 
     public void exitClick(View view) {
-        Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
-        intent.putExtra("Id", IDUser);
-        startActivity(intent);
+        startActivity(new Intent(this, AllNewsActivityAdministrator.class).putExtra("Id", IDUser));
         finish();
     }
 }

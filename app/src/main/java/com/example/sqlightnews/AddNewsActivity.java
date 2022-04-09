@@ -44,18 +44,13 @@ public class AddNewsActivity extends AppCompatActivity {
         databaseHelper
                 .insertNews(txtTitle.getText().toString().trim(), txtContent.getText().toString().trim(),
                         DateUtils.formatDateTime(getApplicationContext(), date.getTimeInMillis(),
-                        DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME), IDUser);
-
-        Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
-        intent.putExtra("Id", IDUser);
-        startActivity(intent);
+                                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME), IDUser);
+        startActivity(new Intent(this, AllNewsActivityAdministrator.class).putExtra("Id", IDUser));
         finish();
     }
 
     public void exitClick(View view) {
-        Intent intent = new Intent(this, AllNewsActivityAdministrator.class);
-        intent.putExtra("Id", IDUser);
-        startActivity(intent);
+        startActivity(new Intent(this, AllNewsActivityAdministrator.class).putExtra("Id", IDUser));
         finish();
     }
 }
