@@ -19,6 +19,7 @@ import java.util.concurrent.Executor;
 
 public class LogInActivity extends AppCompatActivity {
 
+    Intent intent;
     Executor executor;
     BiometricPrompt biometricPrompt;
     BiometricPrompt.PromptInfo promptInfo;
@@ -47,18 +48,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Cursor res = databaseHelper.getData(txtLogin.getText().toString().trim(), txtPassword.getText().toString().trim());
-                if (res.getCount() == 0) {
-                    Toast.makeText(LogInActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                while (res.moveToNext()) {
-                    if (res.getString(7).equals("Администратор")) {
-                        startActivity( new Intent(LogInActivity.this, AllNewsActivityAdministrator.class).putExtra("Id", res.getInt(0)));
-                    } else {
-                        startActivity(new Intent(LogInActivity.this, AllNewsActivity.class));
-                    }
-                }
+                startActivity(intent);
             }
 
             @Override
@@ -81,6 +71,18 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void enterClick(View view) {
+        Cursor res = databaseHelper.getData(txtLogin.getText().toString().trim(), txtPassword.getText().toString().trim());
+        if (res.getCount() == 0) {
+            Toast.makeText(LogInActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        while (res.moveToNext()) {
+            if (res.getString(7).equals("Администратор")) {
+                intent = new Intent(LogInActivity.this, AllNewsActivityAdministrator.class).putExtra("Id", res.getInt(0));
+            } else {
+                intent = new Intent(LogInActivity.this, AllNewsActivity.class);
+            }
+        }
         biometricPrompt.authenticate(promptInfo);
     }
 
