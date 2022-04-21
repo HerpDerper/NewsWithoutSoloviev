@@ -54,7 +54,6 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 while (res.moveToNext()) {
                     if (res.getString(7).equals("Администратор")) {
-
                         startActivity( new Intent(LogInActivity.this, AllNewsActivityAdministrator.class).putExtra("Id", res.getInt(0)));
                     } else {
                         startActivity(new Intent(LogInActivity.this, AllNewsActivity.class));
@@ -67,7 +66,6 @@ public class LogInActivity extends AppCompatActivity {
                 super.onAuthenticationFailed();
             }
         });
-
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Авторизация")
                 .setSubtitle("Прислоните палец")
