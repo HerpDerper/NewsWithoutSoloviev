@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HerpDerp/AndroidStudioProjects/SQLightNews/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23425925925925925" />
         <entry key="..\:/Users/HerpDerp/AndroidStudioProjects/SQLightNews/app/src/main/res/layout/activity_add_news.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/HerpDerp/AndroidStudioProjects/SQLightNews/app/src/main/res/layout/activity_all_news.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/HerpDerp/AndroidStudioProjects/SQLightNews/app/src/main/res/layout/activity_all_news_administrator.xml" value="0.2957427536231884" />
